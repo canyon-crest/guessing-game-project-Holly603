@@ -57,10 +57,16 @@ playBtn.addEventListener("click", play);
 guessBtn.addEventListener("click", makeGuess);
 giveUpBtn.addEventListener("click", giveUp);
 
+function toProperCase(str) {
+  return str.split(" ").map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(" ");
+}
+
 // Start a new game
 function play(){
     // capture user name
-    userName = nameInput ? nameInput.value.trim() : "";
+    userName = toProperCase(nameInput.value.trim());
     score = 0;
     playBtn.disabled = true;
     guessBtn.disabled = false;
